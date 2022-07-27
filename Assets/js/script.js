@@ -3,7 +3,7 @@ var APIKey = 'd51cf5ae14eae78d7df7e5eb31e4fd8c';
 var city;
 var state;
 var country;
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 var cityInputEl = document.querySelector('#cityname');
 var SearchCityEl = document.querySelector('#search-city');
 var weatherContainerEl = document.querySelector('#weather-container');
@@ -69,7 +69,7 @@ dateWeatherEl.text = dateW;
   };
   
   var getUserCities = function (city) {
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
   
     fetch(queryURL)
       .then(function (response) {
@@ -87,7 +87,7 @@ dateWeatherEl.text = dateW;
   };
 
   var getFeaturedCities = async function (city) {
-    var apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
   
     var getInfo = await fetch(apiUrl).then(function (response) {
       if (response.ok) {
