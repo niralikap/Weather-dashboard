@@ -1,9 +1,11 @@
 var userFormEl = document.querySelector('#user-form');
 var APIKey = 'd51cf5ae14eae78d7df7e5eb31e4fd8c';
+var APIKey1 = '77c8fec0d0mshdb05a13cd8505e8p1c1508jsn238f4fdfc268';
 var city;
 var state;
 var country;
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+var queryURLnew = "https://forecast9.p.rapidapi.com/rapidapi/forecast/?q=" + city + "X-RapidAPI-Key=" + APIKey1;
 var cityInputEl = document.querySelector('#cityname');
 var SearchCityEl = document.querySelector('#search-city');
 var weatherContainerEl = document.querySelector('#weather-container');
@@ -13,36 +15,22 @@ var dateWeatherEl = document.querySelector('#date-weather');
 var dateW = moment().format("MM/DD/YY");
 dateWeatherEl.text = dateW;
 
- /* fetch(queryURL)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    // Use the console to examine the response
-    console.log(data);
-    // TODO: Loop through the data and generate your HTML
-    for(var i=0; i<5; i++){
-      console.log(data[i].temp);
-      console.log(data[i].wind);
-      console.log(data[i].humidity);
-      console.log(data[i].all);
-      var cityName = document.createElement('h3');
-      var temperature = document.createElement('p');
-      var wind = document.createElement('p');
-      var humid = document.createElement('p');
-      var uvIndex = document.createElement('p');
-      cityName.textContent = data[i].name;
-      temperature.textContent = data[i].temp;
-      wind.textContent = data[i].wind;
-      humid.textContent = data[i].humidity;
-      uvIndex.textContent = data[i].all;
-      weatherContainerEl.append(cityName);
-      weatherContainerEl.append(temperature);
-      weatherContainerEl.append(wind);
-      weatherContainerEl.append(humid);
-      weatherContainerEl.append(uvIndex);
-    }
-  });*/
+const tomorrow = moment().add(1, 'days');
+console.log(tomorrow.format('YYYY-MM-DD'))
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '77c8fec0d0mshdb05a13cd8505e8p1c1508jsn238f4fdfc268',
+		'X-RapidAPI-Host': 'forecast9.p.rapidapi.com'
+	}
+};
+
+fetch('https://forecast9.p.rapidapi.com/rapidapi/forecast/Berlin/summary/', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+
  
   var formSubmitHandler = function (event) {
     event.preventDefault();
@@ -69,7 +57,7 @@ dateWeatherEl.text = dateW;
   };
   
   var getUserCities = function (city) {
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&perpage=5" + "&appid=" + APIKey;
   
     fetch(queryURL)
       .then(function (response) {
@@ -87,7 +75,7 @@ dateWeatherEl.text = dateW;
   };
 
   var getFeaturedCities = async function (city) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&perpage=5" + "&appid=" + APIKey;
   
     var getInfo = await fetch(apiUrl).then(function (response) {
       if (response.ok) {
@@ -109,7 +97,7 @@ dateWeatherEl.text = dateW;
       return;
     }*/
   console.log(data);
-    cityNameEl.textContent = searchCity;
+    //cityNameEl.textContent = searchCity;
   
     //console.log(data);
     // TODO: Loop through the data and generate your HTML
@@ -123,13 +111,14 @@ dateWeatherEl.text = dateW;
       var wind = document.createElement('p');
       var humid = document.createElement('p');
       var uvIndex = document.createElement('p');
-      cityName.textContent = data.name;
-      temperature.textContent = "Temp: " + data.main.temp + "F";
+     // cityName.textContent = forecast.items.date;
+      cityName.textContent = data.name + " (" + dateW + ")";
+      temperature.textContent = "Temp: " + data.main.temp + " F";
       wind.textContent = "Wind: " + data.wind.speed + "MPH";
       humid.textContent = "Humidity: " + data.main.humidity + "%";
       uvIndex.textContent = "UV Index: " + data.clouds.all;
-      weatherContainerEl.append(dateW);
-      //weatherContainerEl.append(cityName);
+      //weatherContainerEl.append(dateW);
+      weatherContainerEl.append(cityName);
       weatherContainerEl.append(temperature);
       weatherContainerEl.append(wind);
       weatherContainerEl.append(humid);
