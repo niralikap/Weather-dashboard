@@ -1,109 +1,114 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"    rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <link rel="stylesheet" href="./Assets/css/style.css" />
-  <title>Weather</title>
+  <title>Weather Dashboard</title>
 </head>
-
-<body class="flex-column min-100-vh">
-  <header class="hero">
-    <!-- As a heading -->
-<nav class="navbar bg-light">
-    <div class="container-fluid">
-      <span class="app-title" id="nav-bar">Weather Dashboard</span>
-    </div>
-  </nav>
-  </header>
-
-  <main class="flex-row justify-space-between">
-    <div class="col-12 col-md-4">
-
-      <div class="card">
-        <h3 class="card-header text-uppercase">Search for a City</h3>
-        <div id="user-form" class="form-input">
-          <input name="cityname" id="cityname" type="text" autofocus="true" class="form-input" />
-          <button type="search" class="btn">Search</button>
+<body>
+  <!-- <div class="container"> -->
+    <nav class="navbar justify-content-center" id="nav-bar">
+        <a class="navbar-brand" href="#">
+          <h2 style="color:white">Weather Dashboard</h2>
+        </a>
+    </nav>
+  <!-- </div> -->
+  
+  <!-- <div class="container border"> -->
+    <div class="row">
+      <div class="col-3">
+        <form class="form-group my-2" id="inputCity-form">
+          <div class="form-group mb-2">
+            <h4 class="col-12" style="color:black;">Search for a City:</h4>
+          </div>
+          <div class="form-input" id="user-form">
+            <input type="text" class="form-input" id="cityname" placeholder="San Diego">
+          </div>
+          <input type="submit" value="Search" class="search-btn">
+          <hr>
+          <!--<div class="card">
+            <h3 class="card-header text-uppercase">Search for a City</h3>
+            <div id="user-form" class="form-input">
+              <input name="cityname" id="cityname" type="text" autofocus="true" class="form-input" />
+              <button type="search" class="btn" id="search-btn">Search</button>
+             <!-- <div id="weather-container" class="list-group"></div>-->
+          <!--</div>-->
+          <div class="col-12" id="city-buttons">
+            <div class="list-group" id="weather-container"></div>
+          </div>
+        </form>
+      </div>
+      
+      <div class="col-9">
+        <div class="container" style="border:solid; border-color:black;">
+          <div class="jumbotron jumbotron-fluid border p-2">
+            <h3 class="display-7 city-name" id="search-city"> Atlanta (3/30/2021)
+            </h3>
+            <div class="infor">
+              <div id="temp-degree">Temp: 74.01°F</div>
+              <div id="wind-vel">Wind: 6.67 MPH</div>
+              <div id="humid"> 46 %</div>
+              <div id="uv-ind">UV Index: 0.47</div>
+            </div>  
+          </div>
+        </div>
+        <br>
+        <div class="container">
+          <div class="row">
+            <h4 class="lh-base align-content-center">5-Day Forecast:</h4>
+          </div>
+        </div>
+        <br>
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <div class="col-2 border forecast mx-2 flex-fill" style="background-color:rgb(75, 75, 77); color: white;">
+              <h5 id="weatherDt1" class="date-col">3/31/2021</h5>
+              <div id="weatherIc1"></div>
+              <div id="weatherT1">Temp: 73.72°F</div>
+              <div id="weatherW1">Wind: 9.53 MPH</div>
+              <div id="weatherH1">Humidity: 66 %</div>
+            </div>
+            <div class="col-2 border forecast mx-2 flex-fill" style="background-color:rgb(75, 75, 77); color: white;">
+              <h5 id="weatherDt2" class="date-col">4/1/2021</h5>
+              <div id="weatherIc2"></div>
+              <div id="weatherT2">Temp: 49.5°F</div>
+              <div id="weatherW2">Wind: 16.24 MPH</div>
+              <div id="weatherH2">Humidity: 30 %</div>
+            </div>
+            <div class="col-2 border forecast mx-2 flex-fill" style="background-color:rgb(75, 75, 77); color: white;">
+              <h5 id="weatherDt3" class="date-col">4/2/2021</h5>
+              <div id="weatherIc3"></div>
+              <div id="weatherT3">Temp: 53.38°F</div>
+              <div id="weatherW3">Wind: 6.15 MPH</div>
+              <div id="weatherH3">Humidity: 17 %</div>
+            </div>
+            <div class="col-2 border forecast mx-2 flex-fill" style="background-color:rgb(75, 75, 77); color: white;">
+              <h5 id="weatherDt4" class="date-col">4/3/2021</h5>
+              <div id="weatherIc4"></div>
+              <div id="weatherT4">Temp: 61.43°F</div>
+              <div id="weatherW4">Wind: 4.12 MPH</div>
+              <div id="weatherH4">Humidity: 20 %</div>
+            </div>
+            <div class="col-2 border forecast mx-2 flex-fill" style="background-color:rgb(75, 75, 77); color: white;">
+              <h5 id="weatherDt5" class="date-col">4/4/2021</h5>
+              <div id="weatherIc5"></div>
+              <div id="weatherT5">Temp: 69.04°F</div>
+              <div id="weatherW5">Wind: 4.27 MPH</div>
+              <div id="weatherH5">Humidity: 24 %</div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="card">
-        <div id="city-buttons" class="card-body">
-          <button data-city="austin" class="btn">Austin</button>
-          <button data-city="chicago" class="btn">Chicago</button>
-          <button data-city="new york" class="btn">New York</button>
-          <button data-city="orlando" class="btn">Orlando</button>
-          <button data-city="san francisco" class="btn">San Francisco</button>
-          <button data-city="seattle" class="btn">Seattle</button>
-          <button data-city="denver" class="btn">Denver</button>
-          <button data-city="atlanta" class="btn">Atlanta</button>
-        </div>
-      </div>
     </div>
 
-    <div class="col-12 col-md-8">
-      <h2 class="subtitle" id="city-name"><span id="date-weather"></span></h2>
-      <div id="weather-container" class="list-group">
-      </div>
-    </div>
-
-    <!--<div class="card" id ="weather-container" style="width: 50rem;">
-        <div class="card-body" id="weather-body">
-          <h5 class="card-title" id="search-city">Atlanta</h5>
-          <h6 class="card-subtitle mb-2 text-muted" id="temp-degree">Temp</h6>
-          <h6 class="card-subtitle mb-2 text-muted" id="wind-vel">Wind</h6>
-          <h6 class="card-subtitle mb-2 text-muted" id="humid">Humidity</h6>
-          <h6 class="card-subtitle mb-2 text-muted" id="uv-ind">UV Index</h6>
-        </div>
-
-      <div class="card">
-        <h3 class="card-header text-uppercase">5-Day Forecast</h3>
-        <div class="card-body">
-            <h5 class="card-title"></h5>
-            <h6 class="card-subtitle mb-2 text-muted">Temp</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Wind</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Humidity</h6>
-          </div>
-
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-            <h6 class="card-subtitle mb-2 text-muted">Temp</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Wind</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Humidity</h6>
-          </div>
-
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-            <h6 class="card-subtitle mb-2 text-muted">Temp</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Wind</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Humidity</h6>
-          </div>
-
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-            <h6 class="card-subtitle mb-2 text-muted">Temp</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Wind</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Humidity</h6>
-          </div>
-
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-            <h6 class="card-subtitle mb-2 text-muted">Temp</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Wind</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Humidity</h6>
-          </div>
-        </div>-->
-  </main>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  <script src="./Assets/js/script.js"></script>
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
+<script src="./Assets/js/script.js"></script>
 </html>

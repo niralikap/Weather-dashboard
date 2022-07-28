@@ -2,7 +2,7 @@
     --primary: #fefefe;
     --secondary: #9caea9;
     --tertiary: #788585;
-    --light-dark: #6f6866;
+    --light-dark: #1ccbee;
     --dark: #0955ce;
     --border-radius: 0.3rem;
   }
@@ -20,7 +20,30 @@
     line-height: 1.5;
     font-size: 16px;
   }
-  
+
+  #nav-bar{
+background-color: rgb(12, 12, 135);
+color: white;
+  }
+
+  .date-col{
+    color: white;
+  }
+  .search-btn{
+    font-size: 1.3rem;
+    text-decoration: none;
+    padding: 6px 5px;
+    width: 100%;
+    display: block;
+    margin: 5px 0;
+    border-radius: var(--border-radius);
+    color: var(--primary);
+    border: none;
+    outline: none;
+    background-color: var(--light-dark);
+    box-shadow: 3px 3px var(--dark);
+    transform: translate(-1px, -1px);
+  }
   h1,
   h2,
   h3,
