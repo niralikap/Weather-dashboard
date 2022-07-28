@@ -20,6 +20,7 @@ It has the following features:
 
 -The data is stored in the local storage.
 
-[!Image](./Assets/images/image1.jpg)
-[!Image](./Assets/images/image2.jpg)
-[!Image](./Assets/images/image3.jpg)
+![Image](./Assets/images/image1.jpg)
+![Image](./Assets/images/image2.jpg)
+![Image](./Assets/images/image3.jpg)
+![Video](./Assets/images/Weather-dashboard.mov)
